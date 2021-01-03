@@ -8,6 +8,8 @@ var seattle= {
     },
     CookieArray:[]
 };
+
+
 var tokyo= {
     minCust:3,
     maxCust:24,
@@ -18,6 +20,8 @@ var tokyo= {
     CookieArray:[]
     
 };
+
+
 var dubai= {
     minCust: 11,
     maxCust:38,
@@ -28,6 +32,7 @@ var dubai= {
     CookieArray:[]
 };
 
+
 var paris= {
     minCust: 20,
     maxCust:38,
@@ -37,6 +42,8 @@ var paris= {
     },
     CookieArray:[]
 };
+
+
 var lima= {
     minCust: 2,
     maxCust:16,
@@ -50,39 +57,42 @@ var lima= {
 
 function servedCookiePerHour(){
     var CookieArray= [];
-    console.log(CookieArray);
     var hourArray=[' 6am: ',' 7am: ',' 8am: ', ' 9am: ',' 10am: ',' 11am: ',' 12pm: ',' 1pm: ',' 2pm: ',' 3pm: ',' 4pm: ', '5pm: ',' 6pm:',' Total '];
-    console.log(hourArray);
     var cityArray= [seattle,tokyo,dubai,paris,lima];
     var counter = 0;
+
+    console.log(CookieArray);
+    console.log(hourArray);
     console.log(counter);
+
+
     for(var i=0;i<5;i++){
-    for(var j=0;j<14;j++){
-    if (j==13){
+       for(var j=0;j<14;j++){
+
+
+        var article = document.getElementById('citylist');
+        var para= document.createElement('article');
+        article.appendChild(para);
+        var listItem= document.createElement("li");
+        listItem.textContent=cityArray[i].CookieArray[j];
+        article.appendChild(listItem);
+          
+         if (j==13){
         CookieArray[13]=hourArray[13] +counter;
 
-    }else{
-    var randNum =   Math.floor(cityArray[i].randNumCust()*cityArray[i].AvgCookieSale);  
-    CookieArray[j]=hourArray[j] + randNum;
-    counter=randNum+randNum;
-    }
+         }else{
+        var randNum =   Math.floor(cityArray[i].randNumCust()*cityArray[i].AvgCookieSale);  
+        CookieArray[j]=hourArray[j] + randNum;
+        counter=randNum+randNum;
+         }
     
     cityArray[i].CookieArray=CookieArray;}
 
-
-
-    var article = document.getElementById('citylist');
-    var para= document.createElement('article');
-    article.appendChild(para);
-
-    var listItem= document.createElement("li");
-    listItem.textContent=cityArray[i].CookieArray;
-    article.appendChild(listItem);
-
     
-    }
+        }
     
     
 }
 
 servedCookiePerHour();
+
