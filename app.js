@@ -1,3 +1,3 @@
-var minNumCustomers ={
+var seattle= {
     
 }
