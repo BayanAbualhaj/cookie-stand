@@ -12,5 +12,20 @@ img{
 }
 nav{
     background-color: cornsilk;
-    padding: 50;
+    padding-bottom:25px;
+    padding-top: 25px;
+}
+a:hover{
+  background-color: rgb(7, 156, 69);
+}
+table ,th,td {
+
+  font-family: arial, sans-serif;
+  border: 1px solid black;
+  width: 75;
+  margin-top: 5%;
+}
+div{
+  margin-top: 5%;
+
 }
