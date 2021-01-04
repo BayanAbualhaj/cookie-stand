@@ -1,5 +1,20 @@
 "use strict";
+
+
+//function City(){
+   // this.name=passedname;
+    //this.minCust=passedminCust;
+    //this.maxCust=passedmaxCust;
+    //this.AvgCookieSale=passedavg;
+    //this.CookieArray
+//}
+//City.prototype.randNumCust=function(){
+  //  return Math.floor( Math.random()*(this.maxCust- this.minCust)+this.minCust);  
+//}
+//var seattle=
+
 var seattle= {
+    name: 'Seatlle',
     minCust: 23,
     maxCust:65,
     AvgCookieSale:6.3,
@@ -11,6 +26,7 @@ var seattle= {
 
 
 var tokyo= {
+    name: 'Tokyo',
     minCust:3,
     maxCust:24,
     AvgCookieSale:1.2,
@@ -23,6 +39,7 @@ var tokyo= {
 
 
 var dubai= {
+    name: 'Dubai',
     minCust: 11,
     maxCust:38,
     AvgCookieSale:3.7,
@@ -34,6 +51,7 @@ var dubai= {
 
 
 var paris= {
+    name: 'Paris',
     minCust: 20,
     maxCust:38,
     AvgCookieSale:2.3,
@@ -45,6 +63,7 @@ var paris= {
 
 
 var lima= {
+    name:'Lima',
     minCust: 2,
     maxCust:16,
     AvgCookieSale:4.6,
@@ -59,7 +78,7 @@ function servedCookiePerHour(){
     var CookieArray= [];
     var hourArray=[' 6am: ',' 7am: ',' 8am: ', ' 9am: ',' 10am: ',' 11am: ',' 12pm: ',' 1pm: ',' 2pm: ',' 3pm: ',' 4pm: ', '5pm: ',' 6pm:',' Total '];
     var cityArray= [seattle,tokyo,dubai,paris,lima];
-    var counter = 0;
+    
 
     console.log(CookieArray);
     console.log(hourArray);
@@ -67,27 +86,31 @@ function servedCookiePerHour(){
 
 
     for(var i=0;i<5;i++){
+        var counter = 0;
        for(var j=0;j<14;j++){
 
 
-        var article = document.getElementById('citylist');
-        var para= document.createElement('article');
-        article.appendChild(para);
+        var div = document.getElementById('citylist');
         var listItem= document.createElement("li");
-        listItem.textContent=cityArray[i].CookieArray[j];
-        article.appendChild(listItem);
-          
-         if (j==13){
-        CookieArray[13]=hourArray[13] +counter;
+        
+         if (j==0){
+           CookieArray[0]= cityArray[i].name;
+           console.log(CookieArray[0]);
+        }else if(j==13){
 
-         }else{
+            console.log(counter);
+            cityArray[i].CookieArray[j]=hourArray[j]+ counter;
+        }
+       else{
         var randNum =   Math.floor(cityArray[i].randNumCust()*cityArray[i].AvgCookieSale);  
         CookieArray[j]=hourArray[j] + randNum;
-        counter=randNum+randNum;
+        counter=counter+randNum;
          }
+         
+    cityArray[i].CookieArray=CookieArray;
+    listItem.textContent=cityArray[i].CookieArray[j];
+    div.appendChild(listItem);}
     
-    cityArray[i].CookieArray=CookieArray;}
-
     
         }
     
