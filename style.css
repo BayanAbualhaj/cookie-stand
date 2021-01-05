@@ -29,3 +29,28 @@ div{
   margin-top: 5%;
 
 }
+footer,h3,h4,h2{
+  background-color: rgb(92, 23, 2);
+  color: rgb(228, 170, 137);
+  border-style:double;
+}
+section main h3{
+  border-style: dotted;
+  margin-right: 750px;
+}
+a:hover{
+  background-color: ivory;
+  color: blue;
+}
+a:link{
+  text-decoration: none;
+}
+section ul li{
+  list-style-type: circle;
+}
+section main img{
+  margin-top: 10px;
+  display: inline;
+  width: 250px;
+  height: 250px;
+}
