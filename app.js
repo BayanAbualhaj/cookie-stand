@@ -1,4 +1,5 @@
 "use strict";
+
 function City(passName,passMin,passMax,passAvg,passArray){
     this.name=passName;
     this.minCust=passMin;
@@ -94,6 +95,7 @@ function totalRow(){
     table.appendChild(td);
 
     var finaltot=0;
+
     
     for( var i=0;i<hourArray.length;i++){
 
