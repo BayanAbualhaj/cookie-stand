@@ -88,22 +88,29 @@ function locationRows(){
     }
 }
 
-function totalRow(){
-    var rowX= document.createElement('tr');
-    table.appendChild(rowX); 
-    var td = document.createElement("td");
-    td.textContent='Totals';
-    table.appendChild(td);
+function totalRow() {
+    var parentElement = document.getElementsByTagName('table');
+    var tablefinalRow = document.createElement('tr');
+    parentElement[0].appendChild(tablefinalRow);
+    var dataCell = document.createElement('td');
+    dataCell.textContent = 'Totals';
+    tablefinalRow.appendChild(dataCell);
 
-    for (var i=0;i<hourArray.length;i++){
-        for(var j=1;j<locations.length;j++){
-
-        }
+    var finalTotal = 0;
+    
+    for (var i = 0; i < hourArray.length; i++) {
+        var dataCell = document.createElement('td');
+        var hourlyTotal =0;
+        hourlyTotal= Math.floor(seattle.CookieArray[i] + tokyo.CookieArray[i] + paris.CookieArray[i] + dubai.CookieArray[i] + lima.CookieArray[i]);
+        console.log(hourlyTotal);
+        dataCell.textContent = hourlyTotal;
+        tablefinalRow.appendChild(dataCell);
+        finalTotal += hourlyTotal;
     }
-
-
+    var dataCell = document.createElement('td');
+    dataCell.textContent = finalTotal;
+    tablefinalRow.appendChild(dataCell);
 }
-
 
 console.log(locations);
 //caling function :
