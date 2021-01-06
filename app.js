@@ -1,11 +1,12 @@
 "use strict";
-
+var locations=[];
 function City(passName,passMin,passMax,passAvg,passArray){
     this.name=passName;
     this.minCust=passMin;
     this.maxCust=passMax;
     this.AvgCookieSale=passAvg;
     this.CookieArray=passArray;
+    locations.push(this);
 }
 City.prototype.randNumCust=function(){
     return Math.floor( Math.random()*(this.maxCust- this.minCust)+this.minCust);
@@ -29,7 +30,7 @@ dubai.fillCookiArray();
 paris.fillCookiArray();
 lima.fillCookiArray();
 
-var locations=[seattle,tokyo,dubai,paris,lima,'Total'];
+
 
 
 var div=document.getElementById('citylist');
@@ -62,7 +63,7 @@ function time(){
 
 function locationRows(){
             
-    for(var j=0;j<6;j++){
+    for(var j=0;j<locations.length;j++){
         var rowX= document.createElement('tr');
         table.appendChild(rowX);
         var Totalatday=0;
@@ -94,34 +95,42 @@ function totalRow(){
     td.textContent='Totals';
     table.appendChild(td);
 
-    var finaltot=0;
+    for (var i=0;i<hourArray.length;i++){
+        for(var j=1;j<locations.length;j++){
 
-    
-    for( var i=0;i<hourArray.length;i++){
-
-        totalocationPerHour=0;
-        var hourtd = document.createElement("td");
-        for(var j=0;j<locations.length;j++){
-            if (j==5){
-                var td = document.createElement("td");
-                td.textContent=locations[j];
-                table.appendChild(td);
-            }
-            totalocationPerHour+=locations[j].CookieArray[i];
         }
-        hourtd.textContent=totalocationPerHour;
-        rowX.appendChild(hourtd);
-        finaltot += totalocationPerHour;
     }
-    var totaltd = document.createElement("td");
-    totaltd.textContent=totalocHour;
-    rowX.appendChild(totaltd);
+
+
 }
 
 
 console.log(locations);
 //caling function :
-
 time();
 locationRows();
+newBranch();
 totalRow();
+function newBranch(){
+    var newBranch=document.getElementById('add-branch');
+    newBranch.addEventListener('submit',eventLocation);
+}
+
+function eventLocation(event){
+    event.preventDefault();
+
+    
+    var brach =event.target.branch.value;
+    var minCust =parseInt(event.target.minCust.value);
+    var maxCust= parseInt(event.target.maxCust.value);
+    var cookiesPerSale= event.target.cookiesPerSale.value;
+    console.log(event.target.minCust.value);
+
+    var newlocation= new City(brach,minCust,maxCust,cookiesPerSale,[]);
+    newlocation.fillCookiArray();
+    
+    locationRows();
+    
+}
+
+
