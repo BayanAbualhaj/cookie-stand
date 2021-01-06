@@ -61,6 +61,32 @@ function time(){
     }
 }
 
+function totalRow() {
+    var parentElement = document.getElementsByTagName('table');
+    var tablefinalRow = document.createElement('tr');
+    parentElement[0].appendChild(tablefinalRow);
+    var dataCell = document.createElement('td');
+    dataCell.textContent = 'Totals';
+    tablefinalRow.appendChild(dataCell);
+
+    var finalTotal = 0;
+    
+    for (var i = 0; i < hourArray.length; i++) {
+        var dataCell = document.createElement('td');
+        var hourlyTotal =0;
+        hourlyTotal= Math.floor(seattle.CookieArray[i] + tokyo.CookieArray[i] + paris.CookieArray[i] + dubai.CookieArray[i] + lima.CookieArray[i]);
+        console.log(hourlyTotal);
+        dataCell.textContent = hourlyTotal;
+        tablefinalRow.appendChild(dataCell);
+        finalTotal += hourlyTotal;
+    }
+    var dataCell = document.createElement('td');
+    dataCell.textContent = finalTotal;
+    tablefinalRow.appendChild(dataCell);
+}
+
+console.log(locations);
+
 function locationRows(){
             
     for(var j=0;j<locations.length;j++){
@@ -88,36 +114,15 @@ function locationRows(){
     }
 }
 
-function totalRow() {
-    var parentElement = document.getElementsByTagName('table');
-    var tablefinalRow = document.createElement('tr');
-    parentElement[0].appendChild(tablefinalRow);
-    var dataCell = document.createElement('td');
-    dataCell.textContent = 'Totals';
-    tablefinalRow.appendChild(dataCell);
 
-    var finalTotal = 0;
-    
-    for (var i = 0; i < hourArray.length; i++) {
-        var dataCell = document.createElement('td');
-        var hourlyTotal =0;
-        hourlyTotal= Math.floor(seattle.CookieArray[i] + tokyo.CookieArray[i] + paris.CookieArray[i] + dubai.CookieArray[i] + lima.CookieArray[i]);
-        console.log(hourlyTotal);
-        dataCell.textContent = hourlyTotal;
-        tablefinalRow.appendChild(dataCell);
-        finalTotal += hourlyTotal;
-    }
-    var dataCell = document.createElement('td');
-    dataCell.textContent = finalTotal;
-    tablefinalRow.appendChild(dataCell);
-}
 
-console.log(locations);
+
 //caling function :
+
 time();
 locationRows();
-newBranch();
 totalRow();
+newBranch();
 function newBranch(){
     var newBranch=document.getElementById('add-branch');
     newBranch.addEventListener('submit',eventLocation);
